@@ -1,0 +1,28 @@
+{
+  "name": "sstforkmountdiscover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "window": {
+    "width": 800,
+    "height": 500,
+    "icon": "icon192.png"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "build": {
+      "nwVersion": "0.37.0"
+  },
+  "scripts": {
+      "dist": "build --tasks win-x64 --mirror https://dl.nwjs.io/ ."
+  },
+  "dependencies": {
+    "netmask": "git+https://github.com/rs/node-netmask.git#b95d113ebea22a603cfdb17ba1fe1db1af7c50dd"
+  },
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.15.0"
+  }
+}
