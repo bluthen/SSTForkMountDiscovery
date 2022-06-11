@@ -23,8 +23,19 @@ function checkIP(ipAddress, timeout) {
         setTimeout(function () {
             reject(new Error('Timed out.'))
         }, timeout);
-        fetch('http://' + ipAddress + ':5000/hostname').then(function (response) {
-            return response.json();
+        fetch('http://' + ipAddress + ':5000/api/hostname').then(function (response) {
+            if (response.status === 401) { // Might be allsky
+                return {hostname: 'allsky'}
+            } else if (response.status === 200) {
+                return response.json();
+            } else {
+                return fetch('http://' + ipAddress + ':5000/api/config').then(function (response) {
+                    if (response.status === 200) {
+                        return {hostname: 'allsky'};
+                    }
+                    return new Error('none');
+                });
+	    }
         }).then(function (hostname) {
             hostname.ip = ipAddress;
             return hostname;
