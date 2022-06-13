@@ -1,5 +1,6 @@
 const node = {};
 node.os = nw.require('os');
+node.axios = nw.require('axios');
 node.Netmask = nw.require('netmask').Netmask;
 node.net = nw.require('net');
 const nwwindow = nw.Window.get();
@@ -23,19 +24,15 @@ function checkIP(ipAddress, timeout) {
         setTimeout(function () {
             reject(new Error('Timed out.'))
         }, timeout);
-        fetch('http://' + ipAddress + ':5000/api/hostname').then(function (response) {
-            if (response.status === 401) { // Might be allsky
+        node.axios.get('http://' + ipAddress + ':5000/api/hostname').then(function (response) {
+            return response.data;
+        }, function(e) {
+            if (e.response.status === 401) { // Might be allsky
                 return {hostname: 'allsky'}
-            } else if (response.status === 200) {
-                return response.json();
-            } else {
-                return fetch('http://' + ipAddress + ':5000/api/config').then(function (response) {
-                    if (response.status === 200) {
-                        return {hostname: 'allsky'};
-                    }
-                    return new Error('none');
-                });
-	    }
+            } 
+            return node.axios.get('http://' + ipAddress + ':5000/api/config').then(function (response) {
+                return {hostname: 'allsky'};
+            });
         }).then(function (hostname) {
             hostname.ip = ipAddress;
             return hostname;

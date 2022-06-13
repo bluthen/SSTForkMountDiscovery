@@ -1,6 +1,6 @@
 {
   "name": "sstforkmountdiscover",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "index.html",
   "window": {
@@ -17,6 +17,7 @@
     "nwVersion": "0.44.2"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "netmask": "git+https://github.com/rs/node-netmask.git#b95d113ebea22a603cfdb17ba1fe1db1af7c50dd"
   },
   "devDependencies": {
