@@ -1,0 +1,27 @@
+[package]
+name = "sstforkmountdiscovery2"
+version = "1.4.0"
+description = "SSTEQ25 Fork Mount Discovery Tool"
+authors = ["Star Sync Trackers"]
+edition = "2021"
+
+[lib]
+name = "sstforkmountdiscovery2_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+mdns-sd = "0.12"
+reqwest = { version = "0.12", features = ["json"] }
+ipnetwork = "0.21"
+if-addrs = "0.13"
+log = "0.4"
+env_logger = "0.11"
+
