@@ -1,6 +1,6 @@
 [package]
 name = "sstforkmountdiscovery2"
-version = "2.1.1"
+version = "2.1.2"
 description = "SSTEQ25 Fork Mount Discovery Tool"
 authors = ["Star Sync Trackers"]
 edition = "2021"
