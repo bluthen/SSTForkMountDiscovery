@@ -3822,7 +3822,7 @@ dependencies = [
 
 [[package]]
 name = "sstforkmountdiscovery2"
-version = "1.4.0"
+version = "2.1.0"
 dependencies = [
  "env_logger",
  "if-addrs",
